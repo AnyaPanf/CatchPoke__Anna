@@ -11,6 +11,7 @@ button {
 
 .poke {
   background-color: #000000;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .container {
@@ -21,7 +22,6 @@ button {
 
 .poke__title {
   font-size: 30px;
-  font-family: Arial, Helvetica, sans-serif;
   color: #ffffff;
   text-align: center;
   padding: 20px 0 10px;
@@ -29,7 +29,6 @@ button {
 
 .poke__score {
   font-size: 70px;
-  font-family: Arial, Helvetica, sans-serif;
   color: #ffffff;
   font-weight: 600;
   text-align: center;
@@ -47,9 +46,8 @@ button {
   flex-direction: column;
   align-items: center;
   max-width: 300px;
-  height: 240px;
+  height: 270px;
   border-radius: 50%;
-
 }
 
 .poke__card-catch {
@@ -64,13 +62,12 @@ button {
   color: #ffffff;
   font-size: 20px;
   transform: rotate(-10deg);
-  font-family: Arial, Helvetica, sans-serif;
   margin-top: 30px;
 }
 
 .poke__img {
   max-width: 100px;
-  margin: 10px 0 10px;
+  margin: 20px 0 20px;
 }
 
 .poke__img img {
@@ -84,7 +81,6 @@ button {
   background-color: gold;
   text-transform: uppercase;
   color: #000000;
-  font-family: Arial, Helvetica, sans-serif;
   font-size: 15px;
   font-weight: 600;
   padding: 5px 10px;
