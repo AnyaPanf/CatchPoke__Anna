@@ -3,6 +3,7 @@ import Card from './Components/Card'
 import { useState } from 'react'
 
 const App = () => {
+  const [num, setNum] = useState(0)
   let pokeArr = [
     {
       name: "bulbasaur",
@@ -91,10 +92,10 @@ const App = () => {
       <div className='poke'>
         <div className='container'>
           <h1 className='poke__title'>Поймано покемонов</h1>
-          <p className='poke__score'>5/20</p>
+          <p className='poke__score'>{`${num}/${pokeArr.length}`}</p>
           <div className='poke__wrapper'>
             {pokeArr.map((pokemon) => (
-              <Card id={pokemon.id} name={pokemon.name} />
+              <Card id={pokemon.id} name={pokemon.name} setNum={setNum} num={num} />
             ))}
           </div>
         </div>
