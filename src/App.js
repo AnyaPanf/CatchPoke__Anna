@@ -3,7 +3,18 @@ import Card from './Components/Card'
 import { useState } from 'react'
 
 const App = () => {
-  const [num, setNum] = useState(0)
+  const [isCaught, setIsCaught] = useState([])
+
+  const togglePokemonById = (e) => {
+    if (isCaught.includes(e)) {
+      setIsCaught(isCaught.filter((el) => {
+        return el !== e
+      }))
+    } else {
+      return setIsCaught([...isCaught, e])
+    }
+  }
+
   let pokeArr = [
     {
       name: "bulbasaur",
@@ -88,19 +99,17 @@ const App = () => {
   ]
 
   return (
-    <>
       <div className='poke'>
         <div className='container'>
           <h1 className='poke__title'>Поймано покемонов</h1>
-          <p className='poke__score'>{`${num}/${pokeArr.length}`}</p>
+          <p className='poke__score'>{isCaught.length} / {pokeArr.length}</p>
           <div className='poke__wrapper'>
             {pokeArr.map((pokemon) => (
-              <Card id={pokemon.id} name={pokemon.name} setNum={setNum} num={num} />
+              <Card id={pokemon.id} name={pokemon.name} togglePokemonById={togglePokemonById} />
             ))}
           </div>
         </div>
       </div>
-    </>
   );
 }
 
