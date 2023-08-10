@@ -20,6 +20,18 @@ button {
   padding: 0 15px;
 }
 
+.pokemons__btn {
+  display: block;
+  background-color: gold;
+  text-transform: uppercase;
+  color: #000000;
+  font-size: 20px;
+  font-weight: 600;
+  padding: 10px 15px;
+  border-radius: 15px;
+  margin: 20px auto 0;
+}
+
 .poke__title {
   font-size: 30px;
   color: #ffffff;
@@ -48,6 +60,9 @@ button {
   max-width: 300px;
   height: 280px;
   border-radius: 50%;
+}
+
+.poke__card-catch {
   background-color: forestgreen;
 }
 

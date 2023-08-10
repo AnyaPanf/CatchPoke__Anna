@@ -1,115 +1,50 @@
 import React from 'react'
 import Card from './Components/Card'
 import { useState } from 'react'
+import axios from 'axios'
+
 
 const App = () => {
   const [isCaught, setIsCaught] = useState([])
+  const [pokemonsArr, setPokemonsArr] = useState([])
 
-  const togglePokemonById = (e) => {
-    if (isCaught.includes(e)) {
-      setIsCaught(isCaught.filter((el) => {
-        return el !== e
+  const togglePokemonById = (pokemonId) => {
+    if (isCaught.includes(pokemonId)) {
+      setIsCaught(isCaught.filter((id) => {
+        return id !== pokemonId
       }))
     } else {
-      return setIsCaught([...isCaught, e])
+      return setIsCaught([...isCaught, pokemonId])
     }
   }
 
-  let pokeArr = [
-    {
-      name: "bulbasaur",
-      id: "1"
-    },
-    {
-      name: "ivysaur",
-      id: "2"
-    },
-    {
-      name: "venusaur",
-      id: "3"
-    },
-    {
-      name: "charmander",
-      id: "4"
-    },
-    {
-      name: "charmeleon",
-      id: "5"
-    },
-    {
-      name: "charizard",
-      id: "6"
-    },
-    {
-      name: "squirtle",
-      id: "7"
-    },
-    {
-      name: "wartortle",
-      id: "8"
-    },
-    {
-      name: "blastoise",
-      id: "9"
-    },
-    {
-      name: "caterpie",
-      id: "10"
-    },
-    {
-      name: "metapod",
-      id: "11"
-    },
-    {
-      name: "butterfree",
-      id: "12"
-    },
-    {
-      name: "weedle",
-      id: "13"
-    },
-    {
-      name: "kakuna",
-      id: "14"
-    },
-    {
-      name: "beedrill",
-      id: "15"
-    },
-    {
-      name: "pidgey",
-      id: "16"
-    },
-    {
-      name: "pidgeotto",
-      id: "17"
-    },
-    {
-      name: "pidgeot",
-      id: "18"
-    },
-    {
-      name: "rattata",
-      id: "19"
-    },
-    {
-      name: "raticate",
-      id: "20"
+  const getPokemon = async () => {
+    for (let i = 1; i <= 20; i++) {
+      let { data } = await axios(`https://pokeapi.co/api/v2/pokemon/${i}`)
+      setPokemonsArr(prev => {
+        return [...prev, data]
+      })
     }
-  ]
+  }
+  console.log(pokemonsArr);
+
+  const handleClick = (e) => {
+    getPokemon();
+  }
 
   return (
-      <div className='poke'>
-        <div className='container'>
-          <h1 className='poke__title'>Поймано покемонов</h1>
-          <p className='poke__score'>{isCaught.length} / {pokeArr.length}</p>
-          <div className='poke__wrapper'>
-            {pokeArr.map((pokemon) => (
-              <Card id={pokemon.id} name={pokemon.name} togglePokemonById={togglePokemonById} />
-            ))}
-          </div>
+    <div className='poke'>
+      <div className='container'>
+        <h1 className='poke__title'>Поймано покемонов</h1>
+        <p className='poke__score'>{isCaught.length} / {pokemonsArr.length}</p>
+        <button className='pokemons__btn' onClick={handleClick}>Показать всех покемонов</button>
+        <div className='poke__wrapper'>
+          {pokemonsArr.map((pokemon) => (
+            <Card name={pokemon.name} id={pokemon.id} pokemonImage={pokemon.sprites['front_default']} togglePokemonById={togglePokemonById} isCaught={isCaught} />
+          ))}
         </div>
       </div>
+    </div>
   );
 }
 
