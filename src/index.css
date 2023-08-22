@@ -9,6 +9,17 @@ button {
   background-color: transparent;
 }
 
+select {
+  border: none;
+  background-color: transparent;
+  color: #ffffff;
+  font-size: 18px;
+}
+
+option {
+  color: #000000;
+}
+
 body {
   background-color: #000000;
 }
@@ -21,6 +32,11 @@ body {
   max-width: 1230px;
   margin: 0 auto;
   padding: 0 15px;
+}
+
+.pokemonButtons {
+  display: flex;
+  justify-content: space-between;
 }
 
 .pokemons__btn {
@@ -91,6 +107,12 @@ body {
   object-fit: cover;
 }
 
+.pokemon__buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .poke__btn {
   display: block;
   background-color: gold;
@@ -100,4 +122,20 @@ body {
   font-weight: 600;
   padding: 5px 10px;
   border-radius: 10px;
+}
+
+.poke__select {
+  display: flex;
+  margin-top: 20px;
+}
+
+.poke__select p {
+color: #ffffff;
+font-size: 18px;
+margin-right: 5px;
+}
+
+.poke__page {
+  color: #ffffff;
+  font-size: 20px;
 }
